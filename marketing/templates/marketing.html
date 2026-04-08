@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G+Hospital</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8fbff;
+}
+
+/* NAVBAR */
+.navbar {
+    background: rgba(224, 240, 130, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.nav-link {
+    color: #333 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #4facfe !important;
+}
+
+/* HERO */
+.hero {
+    padding: 120px 0;
+}
+
+.hero h1 {
+    font-size: 52px;
+    font-weight: 700;
+}
+
+.hero p {
+    color: #555;
+}
+
+.hero-btn {
+    background: linear-gradient(135deg,#4facfe,#00f2fe);
+    border: none;
+    padding: 12px 35px;
+    border-radius: 30px;
+    color: white;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* IMAGE FLOAT EFFECT */
+.hero-img {
+    border-radius: 20px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-15px);}
+    100% {transform: translateY(0);}
+}
+
+/* SERVICES */
+.service-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: 0.4s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card i {
+    font-size: 40px;
+    color: #4facfe;
+}
+
+/* STATS */
+.stats {
+    background: linear-gradient(135deg,#4facfe,#00f2fe);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.stat h2 {
+    font-weight: 700;
+}
+
+/* ABOUT */
+.about-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+/* FOOTER */
+footer {
+    background: #0f172a;
+    color: white;
+    padding: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR (UNCHANGED LINKS) -->
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand fw-bold" href="/">🏥 G+Hospital</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<li><a class="nav-link" href="/">Home</a></li>
+<li><a class="nav-link" href="/signup">Sign Up</a></li>
+<li><a class="nav-link" href="/login">Login</a></li>
+<li><a class="nav-link" href="/contact">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="row align-items-center">
+
+<div class="col-md-6" data-aos="fade-right">
+<h1>Smart Healthcare<br>For Everyone</h1>
+<p>Modern hospital system with expert doctors and seamless experience.</p>
+<button class="hero-btn" onclick="location.href='/signup'">Get Started</button>
+</div>
+
+<div class="col-md-6 text-center" data-aos="fade-left">
+<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600" class="img-fluid hero-img">
+</div>
+
+</div>
+</div>
+</section>
+<!-- LEARN MORE / FEATURES -->
+<section class="py-5" style="background:#ffffff;">
+    <div class="container">
+
+        <div class="row text-center mb-5">
+            <h2 class="fw-bold">Why Choose G+Hospital?</h2>
+            <p class="text-muted">We deliver trusted healthcare with modern technology</p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="p-4 shadow-sm rounded-4 h-100 text-center" style="transition:0.3s;">
+                    <i class="fas fa-user-md fa-2x text-primary mb-3"></i>
+                    <h5>Qualified Doctors</h5>
+                    <p>Highly experienced and certified medical professionals.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="p-4 shadow-sm rounded-4 h-100 text-center">
+                    <i class="fas fa-laptop-medical fa-2x text-success mb-3"></i>
+                    <h5>Advanced Technology</h5>
+                    <p>We use latest medical tools and digital systems.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="p-4 shadow-sm rounded-4 h-100 text-center">
+                    <i class="fas fa-heart fa-2x text-danger mb-3"></i>
+                    <h5>Patient First</h5>
+                    <p>Your comfort and recovery is our top priority.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+        <div class="text-center mt-5">
+            <button class="btn btn-primary px-4 py-2 rounded-pill"
+                onclick="location.href='/learn_more'">
+                Learn More
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="container py-5">
+<h2 class="text-center mb-5" data-aos="fade-up">Our Services</h2>
+
+<div class="row g-4">
+<div class="col-md-4" data-aos="zoom-in">
+<div class="service-card">
+<i class="fas fa-user-md"></i>
+<h5>Doctors</h5>
+<p>Top medical professionals</p>
+</div>
+</div>
+
+<div class="col-md-4" data-aos="zoom-in">
+<div class="service-card">
+<i class="fas fa-hospital"></i>
+<h5>Facilities</h5>
+<p>Modern infrastructure</p>
+</div>
+</div>
+
+<div class="col-md-4" data-aos="zoom-in">
+<div class="service-card">
+<i class="fas fa-heartbeat"></i>
+<h5>Emergency</h5>
+<p>24/7 support</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+<div class="container">
+<div class="row">
+
+<div class="col-md-4 stat">
+<h2 id="patients">0</h2>
+<p>Patients</p>
+</div>
+
+<div class="col-md-4 stat">
+<h2 id="doctors">0</h2>
+<p>Doctors</p>
+</div>
+
+<div class="col-md-4 stat">
+<h2 id="departments">0</h2>
+<p>Departments</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="container py-5">
+<div class="row align-items-center">
+
+<div class="col-md-6" data-aos="fade-right">
+<img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=600" class="img-fluid rounded">
+</div>
+
+<div class="col-md-6" data-aos="fade-left">
+<div class="about-box">
+<h2>Why Choose Us?</h2>
+<p>We combine expertise and technology for best healthcare.</p>
+<button class="btn btn-primary" onclick="location.href='/contact'">Contact</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center">
+<p>&copy; 2026 G+Hospital</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init();
+
+/* COUNTER ANIMATION */
+function animate(id, end) {
+let start = 0;
+let interval = setInterval(() => {
+start++;
+document.getElementById(id).innerText = start;
+if(start >= end) clearInterval(interval);
+}, 20);
+}
+
+animate("patients", 5000);
+animate("doctors", 120);
+animate("departments", 25);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

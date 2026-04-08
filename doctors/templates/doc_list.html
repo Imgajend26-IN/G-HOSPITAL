@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor List - G+Hospital</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #00a86b;
+            --dark-color: #001a4d;
+        }
+
+        /* BACKGROUND IMAGE */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+            url('https://i.pinimg.com/originals/eb/2f/95/eb2f955cc1ba643c0d3a9e68543a9aa7.jpg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #00ffc3 !important;
+        }
+
+        /* MAIN */
+        .list-container {
+            flex: 1;
+            padding: 40px 20px;
+        }
+
+        /* GLASS CARD */
+        .list-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            padding: 40px;
+            max-width: 950px;
+            margin: auto;
+            animation: fadeUp 0.8s ease;
+        }
+
+        /* HEADER */
+        .list-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* DOCTOR CARD */
+        .doctor-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: 0.4s;
+            border-left: 5px solid var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* HOVER EFFECT */
+        .doctor-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 10px 35px rgba(0,255,200,0.4);
+        }
+
+        /* LIGHT SWEEP ANIMATION */
+        .doctor-card::before {
+            content: "";
+            position: absolute;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            top: 0;
+            left: -120%;
+            transition: 0.6s;
+        }
+
+        .doctor-card:hover::before {
+            left: 100%;
+        }
+
+        /* TEXT */
+        .doctor-name {
+            font-weight: 600;
+            color: white;
+        }
+
+        .doctor-info {
+            color: #ddd;
+        }
+
+        /* BUTTONS */
+        .btn-success {
+            background: linear-gradient(135deg,#00c896,#00a86b);
+            border: none;
+        }
+
+        .btn-primary {
+            border-radius: 20px;
+        }
+
+        .delete-btn {
+            background: #ff4d4d;
+            border-radius: 20px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(0,0,0,0.7);
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand text-white" href="/">
+            <i class="fas fa-hospital"></i> G+Hospital
+        </a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto">
+                <li><a class="nav-link" href="/">Home</a></li>
+                <li><a class="nav-link" href="/contact">Contact</a></li>
+                <li><a class="nav-link" href="/dashboard">dashboard</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<div class="list-container">
+    <div class="list-card">
+
+        <div class="list-header">
+            <h2><i class="fas fa-user-md text-info me-2"></i>Doctor List</h2>
+            <p class="text-light">Meet our qualified doctors at G+Hospital</p>
+
+            <div class="text-center mb-3">
+                <a href="{% url 'doctors_create' %}" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Create Doctor
+                </a>
+            </div>
+        </div>
+
+        {% if doctors %}
+            {% for d in doctors %}
+            <div class="doctor-card">
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+                        <div class="doctor-name">
+                            <i class="fas fa-user-md me-2"></i>{{ d.name }}
+                        </div>
+
+                        <div class="doctor-info">
+                            <i class="fas fa-stethoscope me-2"></i>Specialization: {{ d.specialization }}
+                        </div>
+
+                        <div class="doctor-info">
+                            <i class="fas fa-phone me-2"></i>Phone: {{ d.phone }}
+                        </div>
+                    </div>
+
+                    <!-- ACTION BUTTONS -->
+                    <div>
+                        <a href="{% url 'doctors_edit' d.id %}" class="btn btn-sm btn-primary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <a href="{% url 'doctors_delete' d.id %}"
+                           class="btn btn-sm delete-btn text-white"
+                           onclick="return confirm('Are you sure to delete this doctor?');">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center">
+                <p class="text-light">No doctors registered yet.</p>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 G+Hospital | All Rights Reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
