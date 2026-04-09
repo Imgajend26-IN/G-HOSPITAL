@@ -43,3 +43,12 @@ def doctors_create(request):
        )
        return redirect('doctor_list')
     return render(request,"doctors_create.html")
+
+
+
+from rest_framework.generics import ListCreateAPIView
+from .serializers import DoctorSerializer
+
+class DoctorListCreateApiView(ListCreateAPIView):
+    queryset = Doctor.objects.all()
+    serializer_class = DoctorSerializer

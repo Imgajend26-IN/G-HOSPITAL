@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'dashboard',
     'appointment',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
