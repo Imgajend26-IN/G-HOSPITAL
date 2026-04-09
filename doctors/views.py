@@ -33,11 +33,13 @@ def doctors_create(request):
        name =  request.POST.get('name')
        specialization = request.POST.get('specialization')
        phone = request.POST.get('phone')
+       email = request.POST.get('email')
 
        Doctor.objects.create(
            name=name,
            specialization=specialization,
-           phone=phone
+           phone=phone,
+           email=email
        )
        return redirect('doctor_list')
     return render(request,"doctors_create.html")

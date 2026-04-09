@@ -127,3 +127,5 @@ LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = 'dashboard_home'
 LOGOUT_REDIRECT_URL = 'login'
+
+GEMINI_API_KEY  ="AIzaSyBpqLiTnQiex69eGgMnIcmy5cJrsW-win0"
