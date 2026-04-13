@@ -81,13 +81,19 @@ WSGI_APPLICATION = 'medhahospital.wsgi.application'
 from decouple import config
 import dj_database_url
 
+# Secret Key
+SECRET_KEY = config("SECRET_KEY")
+
+# Database (Supabase PostgreSQL)
 DATABASES = {
     'default': dj_database_url.parse(config('DATABASE_URL'))
 }
-
 DATABASES['default']['OPTIONS'] = {
     'sslmode': 'require',
 }
+
+# Gemini API Key
+GEMINI_API_KEY = config("GEMINI_API_KEY")
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -130,4 +136,3 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'dashboard_home'
 LOGOUT_REDIRECT_URL = 'login'
 
-GEMINI_API_KEY  = config("GEMINI_API_KEY ")
