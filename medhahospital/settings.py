@@ -24,8 +24,11 @@ SECRET_KEY = ('SECTRAT_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*", "g-hospital-8fi1.onrender.com"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://g-hospital-8fi1.onrender.com",
+]
 
 # Application definition
 
